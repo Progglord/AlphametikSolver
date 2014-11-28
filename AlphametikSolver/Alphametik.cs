@@ -59,7 +59,7 @@ namespace AlphametikSolver
         public SortedList<char, int> Solve()
         {
             if (this.SymbolTable.Count > 10)
-                throw new Exception("Zu viele Buchstaben.");
+                throw new Exception("Too many letters.");
 
             SortedList<char, int> assignment = new SortedList<char, int>();
             switch (this.Operator)
@@ -68,13 +68,13 @@ namespace AlphametikSolver
                     if (this.Result.Length == this.MaximumWordLength + 1)
                         assignment[this.Result[0]] = 1; // this HAS to be 1, for mathematical background see documentation
                     else if (this.Result.Length != this.MaximumWordLength)
-                        throw new Exception("Das Ergebnis hat zu viele oder zu wenige Buchstaben.");
+                        throw new Exception("The result has to few or to many letters.");
                     break;
 
                 case Operator.Multiplication:
                     int wordSum = this.Words.Sum((s) => s.Length);
                     if (this.Result.Length != wordSum) // as every word has to start with non-zero the result must be of that length
-                        throw new Exception("Das Ergebnis hat zu viele oder zu wenige Buchstaben.");
+                        throw new Exception("The result has to few or to many letters.");
                     break;
 
                 case Operator.Subtraction: // change alphametik to get same results solving a additive/multiplicative alphametik
